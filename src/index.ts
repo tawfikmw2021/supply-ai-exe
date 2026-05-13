@@ -4,12 +4,7 @@ import * as http from "http";
 import fs from "fs";
 import { computeSHA256, downloadFile } from "./download";
 
-const url = "https://github.com/tawfikmw2021/supply-ai-exe/releases/latest/download/publisher.exe";
-
 import { exec } from "child_process";
-
-const VERSION_URL =
-  "https://raw.githubusercontent.com/tawfikmw2021/supply-ai-exe/main/version.json";
 
 const LOCAL_VERSION_FILE = "version.json";
 const APP_FILE = "example.exe";
@@ -68,7 +63,6 @@ async function checkUpdate() {
   console.log("Remote version:", remote.version);
 
   if (remote.version !== local) {
-    await downloadFile(VERSION_URL, "version.json");
     console.log("Update found!");
 
     await killApp();
